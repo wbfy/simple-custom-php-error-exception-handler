@@ -15,8 +15,9 @@ It’s also smart enough to distinguish whether its running under PHP CLI or HTT
 
 ## Usage
 ```PHP
-$error_email_to = '';                                   // Leave blank for no email
 include 'ExceptionErrorHandler.class.php';              // Include class
+
+$error_email_to = '';                                   // Leave blank for no email
 ExceptionErrorHandler::register($error_email_to);       // initialise class
 ```
 See index.php for more details on usage
