@@ -12,7 +12,8 @@ If an error happens then it can do three things:
 1. Display the error honouring the PHP display_errors flag to hide details in production.
 
 It’s also smart enough to distinguish whether its running under PHP CLI or HTTP mode and format the display accordingly.
-##Usage
+
+## Usage
 ```PHP
 $error_email_to = '';                                   // Leave blank for no email
 include 'ExceptionErrorHandler.class.php';              // Include class
@@ -20,7 +21,7 @@ ExceptionErrorHandler::register($error_email_to);       // initialise class
 ```
 See index.php for more details on usage
 
-##Testing
+## Testing
 See index.php for examples of exceptions and errors
 
 ## Contributers
