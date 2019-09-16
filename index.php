@@ -4,7 +4,7 @@
  */
 
 // Set to false to simulate production
-ini_set('display_errors', false);
+ini_set('display_errors', true);
 
 require 'ExceptionErrorHandler.class.php';
 
