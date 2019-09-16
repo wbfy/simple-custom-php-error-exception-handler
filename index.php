@@ -2,7 +2,7 @@
 /***
  * Example usage and tests
  */
-include 'ExceptionErrorHandler.class.php';
+require 'ExceptionErrorHandler.class.php';
 
 // Add your email address to send test email
 $test_email_to = '';
