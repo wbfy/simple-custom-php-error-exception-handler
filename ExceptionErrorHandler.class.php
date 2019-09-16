@@ -23,8 +23,8 @@ class ExceptionErrorHandler
 {
     // Email error notifications sender and recipient
     // Leave blank for no email
-    private $email_to   = '';
-    private $email_from = '';
+    private static $email_to   = '';
+    private static $email_from = '';
 
     // Register handlers
     public static function register($email_to = '', $email_from = '')
@@ -32,24 +32,24 @@ class ExceptionErrorHandler
         register_shutdown_function([__CLASS__, 'shutdown']);
         set_error_handler([__CLASS__, 'errorHandler']);
         set_exception_handler([__CLASS__, 'exceptionHandler']);
-        self::setEmailFrom($from);
-        self::setEmailTo($to);
+        self::setEmailFrom($email_from);
+        self::setEmailTo($email_to);
     }
 
     // Recipient for error notification emails
     // Also set sender to same as recipient if not already set
     public static function setEmailTo($email)
     {
-        $this->email_to = $email;
-        if (empty($this->email_from)) {
-            $this->email_from = $this->email_to;
+        self::$email_to = $email;
+        if (empty(self::$email_from)) {
+            self::$email_from = self::$email_to;
         }
     }
 
     // Sender for error notification emails
     public static function setEmailFrom($email)
     {
-        $this->email_from = $email;
+        self::$email_from = $email;
     }
 
     // Shutdown (fatal) error handler

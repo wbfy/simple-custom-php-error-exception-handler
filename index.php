@@ -5,10 +5,10 @@
 require 'ExceptionErrorHandler.class.php';
 
 // Add your email address to send test email
-$test_email_to = '';
+$send_email_to = '';
 
 // Initialise exception/error handler
-ExceptionErrorHandler::register($test_email_to);
+ExceptionErrorHandler::register($send_email_to);
 
 // TESTS
 // Comment out as appropriate
