@@ -16,7 +16,7 @@ $send_email_to = '';
 ExceptionErrorHandler::register($send_email_to);
 
 // TESTS
-// Comment out as appropriate
+// Comment out as appropriate below
 
 // Test exception handler
 throw new Exception('Test exception handler');
