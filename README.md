@@ -29,4 +29,5 @@ Steve Perkins, Websites Built For You
 
 ## Licence
 The class is licenced under the MIT licence
+
 (c) 2017 Websites Built For You
