@@ -24,8 +24,8 @@ See index.php for more details on usage
 ## Testing
 See index.php for some examples of exceptions and errors
 
-## Contributers
-Steve Perkins, Websites Built For You
+## Contributors
+Steve Perkins - Websites Built For You
 
 ## Licence
 The class is licenced under the MIT licence
