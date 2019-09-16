@@ -1,6 +1,7 @@
 <?php
 /*
  * Copyright 2017 Websites Built For You
+ *
  * Permission is hereby granted, free of charge, to any person obtaining a copy of
  * this software and associated documentation files (the "Software"), to deal in the
  * Software without restriction, including without limitation the rights to use, copy,
@@ -18,28 +19,37 @@
  * TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
  * USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
-
-/*
- * Basic PHP error / exception handler class
- * Will handle HTTP and CLI errors
- * Will display, log and email errors
- * Uses pure PHP with no external libraries to avoid error loops
- */
 class ExceptionErrorHandler
 {
-    // Where to send email error notifications
+    // Email error notifications sender and recipient
     // Blank for no email
-    const EMAIL_ERROR_TO = 'errors@example.com';
-    // Sender email address for errors
-    // Blank for system default
-    const EMAIL_ERROR_FROM = 'errors@example.com';
+    private $email_to   = '';
+    private $email_from = '';
 
     // Register handlers
-    public static function register()
+    public static function register($email_to = '', $email_from = '')
     {
         register_shutdown_function([__CLASS__, 'shutdown']);
         set_error_handler([__CLASS__, 'errorHandler']);
         set_exception_handler([__CLASS__, 'exceptionHandler']);
+        self::setEmailFrom($from);
+        self::setEmailTo($to);
+    }
+
+    // Recipient for error notification emails
+    // Also set sender to same as recipient if not already set
+    public static function setEmailTo($email)
+    {
+        $this->email_to = $email;
+        if (empty($this->email_from)) {
+            $this->email_from = $this->email_to;
+        }
+    }
+
+    // Sender for error notification emails
+    public static function setEmailFrom($email)
+    {
+        $this->email_from = $email;
     }
 
     // Shutdown (fatal) error handler
@@ -88,15 +98,13 @@ class ExceptionErrorHandler
     // Uses basic PHP mail() function
     private static function send($subject, $body)
     {
-        if (!empty(self::EMAIL_ERROR_TO)) {
+        if (!empty(self::$email_to)) {
             $headers = '';
-            if (!empty(self::EMAIL_ERROR_FROM)) {
-                $headers = 'From: ' . self::EMAIL_ERROR_FROM;
-            }
+            $headers = 'From: ' . self::$email_from;
 
             $sent = false;
             try {
-                $sent = mail(self::EMAIL_ERROR_TO, $subject, nl2br(htmlentities($body)), $headers);
+                $sent = mail(self::$email_to, $subject, nl2br(htmlentities($body)), $headers);
             } catch (exception $e) {
                 $sent = false;
             }
