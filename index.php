@@ -6,7 +6,7 @@
 // Set to false to simulate production
 ini_set('display_errors', true);
 
-// Include class
+// Include the class
 require 'ExceptionErrorHandler.class.php';
 
 // Add your email address to send test email
