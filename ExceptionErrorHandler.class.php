@@ -20,8 +20,6 @@
  */
 
 /*
- * Current version: 1.0.0
- *
  * Basic PHP error / exception handler class
  * Will handle HTTP and CLI errors
  * Will display, log and email errors
