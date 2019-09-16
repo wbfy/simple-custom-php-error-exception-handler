@@ -2,6 +2,10 @@
 /***
  * Example usage and tests
  */
+
+// Set to false to simulate production
+ini_set('display_errors', false);
+
 require 'ExceptionErrorHandler.class.php';
 
 // Add your email address to send test email
