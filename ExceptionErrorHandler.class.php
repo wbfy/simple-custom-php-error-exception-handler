@@ -22,7 +22,7 @@
 class ExceptionErrorHandler
 {
     // Email error notifications sender and recipient
-    // Blank for no email
+    // Leave blank for no email
     private $email_to   = '';
     private $email_from = '';
 
@@ -122,7 +122,7 @@ class ExceptionErrorHandler
         ob_clean();
 
         if (php_sapi_name() != "cli") {
-            // HTTP error
+            // HTML error output
             if (!headers_sent()) {
                 header('HTTP/1.1 500 Internal Server Error');
             }
@@ -164,7 +164,7 @@ class ExceptionErrorHandler
                 </body>
 END;
         } else {
-            // CLI error so no html formatting
+            // CLI error so text only error output
             echo 'Oops! Sorry but an error has occured in the application. The problem has been reported and well be resolved soon. Please try again later.' . PHP_EOL;
             if (ini_get('display_errors')) {
                 echo PHP_EOL . $details . PHP_EOL;

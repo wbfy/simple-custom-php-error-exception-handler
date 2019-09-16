@@ -1,11 +1,10 @@
 <?php
 /***
- * Test functions
+ * Example usage and tests
  */
 include 'ExceptionErrorHandler.class.php';
 
-// Where to send test email
-// Comment out or set blank for no email
+// Add your email address to send test email
 $test_email_to = '';
 
 // Initialise exception/error handler

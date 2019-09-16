@@ -22,7 +22,7 @@ ExceptionErrorHandler::register($error_email_to);       // initialise class
 See index.php for more details on usage
 
 ## Testing
-See index.php for examples of exceptions and errors
+See index.php for some examples of exceptions and errors
 
 ## Contributers
 Steve Perkins, Websites Built For You
