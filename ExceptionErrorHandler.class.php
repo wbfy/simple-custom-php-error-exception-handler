@@ -22,7 +22,7 @@
 class ExceptionErrorHandler
 {
     // Email error notifications sender and recipient
-    // Leave blank for no notifications email
+    // Leave blank for no notification emails
     private static $email_to   = '';
     private static $email_from = '';
 
