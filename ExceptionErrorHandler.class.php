@@ -61,9 +61,9 @@ class ExceptionErrorHandler
             $details .= '-----' . PHP_EOL;
             $details .= '$_GET' . PHP_EOL . print_r($_GET, 1) . '$_POST' . PHP_EOL . print_r($_POST, 1) . '$_SERVER' . PHP_EOL . print_r($_SERVER, 1);
             if (strpos($error['message'], 'Uncaught yafw_Exceptions') === false) {
-                self::logError($details);
-                self::showError($details);
-                self::sendEmail('shutdownHandler: ' . $error['message'], $details);
+                self::log($details);
+                self::show($details);
+                self::send('shutdownHandler: ' . $error['message'], $details);
             }
         }
     }
@@ -71,8 +71,26 @@ class ExceptionErrorHandler
     // Standard error handler
     public static function errorHandler($err_code, $err_msg, $err_file, $err_line, $err_context)
     {
-        // Throw the error as an exception to be handled by the exception error handler
-        throw new ErrorException($err_msg, 0, $err_code, $err_file, $err_line);
+        if (!(error_reporting() & $errno)) {
+            // This error code is not included in error_reporting, so let it fall
+            // through to the standard PHP error handler
+            return false;
+        }
+        switch ($err_code) {
+            case E_USER_WARNING:
+            case E_USER_NOTICE:
+                // Log and send error notification
+                $details = $err_file . ': [' . $err_code . '] ' . $err_msg . PHP_EOL;
+                self::log($details);
+                self::send('errorHandler: ' . $errmsg, $details);
+                // Ignore the error and continue
+                return true;
+            case E_USER_ERROR:
+            default:
+                // Throw the error as an exception to be handled by the exception error handler
+                throw new ErrorException($err_msg, 0, $err_code, $err_file, $err_line);
+                break;
+        }
     }
 
     // Exception error handler
