@@ -71,7 +71,7 @@ class ExceptionErrorHandler
     // Standard error handler
     public static function errorHandler($err_code, $err_msg, $err_file, $err_line, $err_context)
     {
-        if (!(error_reporting() & $errno)) {
+        if (!(error_reporting() & $err_code)) {
             // This error code is not included in error_reporting, so let it fall
             // through to the standard PHP error handler
             return false;
