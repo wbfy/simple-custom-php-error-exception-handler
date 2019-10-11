@@ -26,9 +26,9 @@ See index.php for more details on usage
 See index.php for some examples of exceptions and errors
 
 ## Contributors
-Steve Perkins - Websites Built For You
+Steve Perkins
 
 ## Licence
 The class is licenced under the MIT licence
 
-(c) 2017 Websites Built For You
+Copyright (c) 2012 Steve Perkins, [Websites Built For You](https://websitesbuiltforyou.com)
