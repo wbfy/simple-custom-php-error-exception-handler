@@ -29,6 +29,6 @@ See index.php for some examples of exceptions and errors
 Steve Perkins
 
 ## Licence
-The class is licenced under the MIT licence
+The class is licensed under the MIT licence.
 
 Copyright (c) 2012 Steve Perkins, [Websites Built For You](https://websitesbuiltforyou.com)
